@@ -11,13 +11,13 @@
     - [for](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#for-语句)
     - [switch](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#switch-语句)
 
-* [四、Interface](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#四interface)
+* [四、Interface](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#四interfaces)
 
 * [五、Inheritance](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#五inheritance)
 
 
 
-# 一、 OOP
+# 一、OOP
 > Object Oriented Programming
 
 # 二、Keywords
