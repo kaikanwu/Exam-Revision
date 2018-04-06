@@ -1,7 +1,6 @@
-* [一、Object Oriented Programming]
+* [一、Object Oriented Programming](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#一oop)
 
-* [二、Keywords](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#二keywords
-)
+* [二、Keywords](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#二keywords)
     - private
     - static
     - final
@@ -18,9 +17,11 @@
 
 
 
+# 一、 OOP
+> Object Oriented Programming
 
 # 二、Keywords
-(qualifier) 关键词，限定词
+> (qualifier) 关键词，限定词
 ## private
 
 > The qualifier “private” means that the method can be used only in the class in which it is declared. 
@@ -108,7 +109,7 @@ public class SwitchDemo {
 }
 ```
 
-# Interfaces
+# 四、Interfaces
 > Using interfaces to make your code re-useable
 1. Interface declaration （接口声明）
 
@@ -166,7 +167,7 @@ public class BankAccount implements Measurable{
     > A class can implement more than one interface
 
 
-# Inheritance
+# 五、Inheritance
 > 1. Reuse and extend your code 
 > 2. Inheritance hierarchies
 
