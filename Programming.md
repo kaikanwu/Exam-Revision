@@ -7,11 +7,11 @@
     - static
     - final
 
-* [statement](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#Statement)
+* [statement](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#statement)
     - if
     - while 
-    - [for](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#for)
-    - [switch](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#switch)
+    - [for](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#for-语句)
+    - [switch](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#switch-语句)
 
 
 
@@ -34,7 +34,7 @@ for(int i = 0; i < 100; i++){
     System.out.println("Count is: " + i );
 }
 ```
-2. infinate loop 无限循环
+2. infinate loop 无限循环
 ```
 
 
