@@ -18,9 +18,9 @@
 
 
 
-#Statement
+# Statement
 
-##for 
+## for 
 ```
 for(initializaiton;termination; increment){
     statement(s)
@@ -60,7 +60,7 @@ for(int x : numbers){
 // ...
 ```
 
-##switch
+## switch
 ```
 
 
