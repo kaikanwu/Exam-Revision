@@ -1,26 +1,26 @@
 * [一、Object Oriented Programming]
 
-* [二、Keywords(qualifier) 关键字,限定词](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#keywords
+* [二、Keywords](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#二keywords
 )
     - private
     - static
     - final
 
-* [三、statement](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#statement)
+* [三、statement](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#三statement)
     - if
     - while 
     - [for](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#for-语句)
     - [switch](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#switch-语句)
 
-* [四、Interface](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#interface)
+* [四、Interface](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#四interface)
 
-* [五、Inheritance](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#inheritance)
-
-
+* [五、Inheritance](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#五inheritance)
 
 
-# 二、Keywords
-(qualifier)
+
+
+# 二、Keywords
+(qualifier) 关键词，限定词
 ## private
 
 > The qualifier “private” means that the method can be used only in the class in which it is declared. 
