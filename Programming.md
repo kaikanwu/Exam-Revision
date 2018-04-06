@@ -2,7 +2,7 @@
 ## Java Basic
 * Object Oriented Programming
 
-* 关键字
+* Keywords(qualifier) 关键字,限定词
     - private
     - static
     - final
@@ -13,12 +13,32 @@
     - [for](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#for-语句)
     - [switch](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#switch-语句)
 
+* [Interface](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#interface)
+
+* [Inheritance](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#inheritance)
+
+
+
+
+# Keywords(qualifier)
+
+## private
+
+> The qualifier “private” means that the method can be used only in the class in which it is declared. 
+
+## static
+
+>  The qualifier “static” means that the method is a member of the class in which it is defined, and not of any object of that class. (In particular it is not necessary to create an object of the class in order to use the method.) 
+
+## final
+* final method
+* final variables
 
 
 
 
 
-# Statement
+# statement
 
 ## for 语句 
 ```
@@ -59,6 +79,7 @@ for(int x : numbers){
 ```
 
 ## switch 语句
+
 ```
 
 
@@ -87,5 +108,67 @@ public class SwitchDemo {
     }
 }
 ```
+
+# Interfaces
+> Using interfaces to make your code re-useable
+1. Interface declaration （接口声明）
+
+```
+//example 1
+public interface Measurable{
+    int getMeasure();
+}
+```
+
+
+
+```
+// example 2 with parameters
+public interface OperateCar {
+   // An enum with values RIGHT, LEFT
+   int turn(Direction direction,
+            double radius,
+            double startSpeed,
+            double endSpeed);
+   int changeLanes(Direction direction,
+                   double startSpeed,
+                   double endSpeed);
+   int signalTurn(Direction direction,
+                  boolean signalOn);
+   int getRadarFront(double distanceToCar,
+                     double speedOfCar);
+   int getRadarRear(double distanceToCar,
+                    double speedOfCar);
+         ......
+   // more method signatures
+}
+```
+2. Implements an interface （实现一个接口）
+> keyworkds: **implements**
+
+> 
+
+> class **must** define all the methods 必须重写接口中的所有方法
+
+```
+public class BankAccount implements Measurable{
+    //
+    public int getMeasure(){
+        return balance;
+    }
+    // could add additional methods
+}
+```
+3. Interface vs. classes
+    * All methods in an interface type are **abstract**; they don’t have an implementation 
+    * All methods in an interface type are automatically public
+    * An interface type does not have instance fields (though it can have constants)
+4. Other 
+    > A class can implement more than one interface
+
+
+# Inheritance
+> 1. Reuse and extend your code 
+> 2. Inheritance hierarchies
 
 
