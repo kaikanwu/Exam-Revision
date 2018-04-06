@@ -10,8 +10,8 @@
 * [statement](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#Statement)
     - if
     - while 
-    - [for](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md##for)
-    - [switch](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md##switch)
+    - [for](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#for)
+    - [switch](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#switch)
 
 
 
@@ -20,31 +20,29 @@
 
 # Statement
 
-## for 
+## for 语句 
 ```
 for(initializaiton;termination; increment){
     statement(s)
 }
 ```
 * examples:
+1. 基础
 ```
 for(int i = 0; i < 100; i++){
     ...
     System.out.println("Count is: " + i );
-
 }
 ```
+2. infinate loop 无限循环
 ```
-// infinate loop
+
 
 for(;;){
     //code
 }
 ```
-
-
-
-
+3. 遍历数组
 ```
 // used for array
 
@@ -60,7 +58,7 @@ for(int x : numbers){
 // ...
 ```
 
-## switch
+## switch 语句
 ```
 
 
