@@ -143,7 +143,7 @@ public interface OperateCar {
    // more method signatures
 }
 ```
-2. Implements an interface （实现一个接口）
+2. Implements an interface (实现一个接口）
 > keyworkds: **implements**
 
 > 
@@ -167,7 +167,7 @@ public class BankAccount implements Measurable{
     > A class can implement more than one interface
 
 
-# 五、Inheritance
+# 五、Inheritance
 > 1. Reuse and extend your code 
 > 2. Inheritance hierarchies
 
