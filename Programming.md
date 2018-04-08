@@ -3,6 +3,7 @@
 * [二、Keywords](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#二keywords)
     - private
     - static
+    - protected
     - final
 
 * [三、statement](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#三statement)
@@ -48,22 +49,20 @@ for(initializaiton;termination; increment){
 ```
 * examples:
 1. 基础
-```
+```java
 for(int i = 0; i < 100; i++){
     ...
     System.out.println("Count is: " + i );
 }
 ```
 2. infinate loop 无限循环
-```
-
-
+```java
 for(;;){
     //code
 }
 ```
 3. 遍历数组
-```
+```java
 // used for array
 
 int[] numbers = {1,2,3,4,5,6,7,8,9};
@@ -80,7 +79,7 @@ for(int x : numbers){
 
 ## switch 语句
 
-```
+```java
 
 
 public class SwitchDemo {
@@ -113,7 +112,7 @@ public class SwitchDemo {
 > Using interfaces to make your code re-useable
 1. Interface declaration （接口声明）
 
-```
+```java
 //example 1
 public interface Measurable{
     int getMeasure();
@@ -122,7 +121,7 @@ public interface Measurable{
 
 
 
-```
+```java
 // example 2 with parameters
 public interface OperateCar {
    // An enum with values RIGHT, LEFT
@@ -150,7 +149,7 @@ public interface OperateCar {
 
 > class **must** define all the methods 必须重写接口中的所有方法
 
-```
+```java
 public class BankAccount implements Measurable{
     //
     public int getMeasure(){
