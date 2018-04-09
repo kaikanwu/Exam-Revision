@@ -16,11 +16,11 @@
 
 * [五、Inheritance](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#五inheritance)
 
-* [六、Recursive]()
-* [七、GUI]()
+* [六、Recursive](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#六recursive)
+* [七、GUI](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#七gui)
     - JComponents
     - diagrams
-* [八、MVC]()
+* [八、MVC](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#八mvc)
     - Model, View, Controller
     - Roles
 
@@ -178,6 +178,11 @@ public class BankAccount implements Measurable{
 > 1. Reuse and extend your code 
 > 2. Inheritance hierarchies
 
+
+
+# 六、Recursive
+
+# 七、GUI
 
 # 八、MVC
 1. Model, View, Controller
