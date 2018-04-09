@@ -179,3 +179,10 @@ public class BankAccount implements Measurable{
 > 2. Inheritance hierarchies
 
 
+# 八、MVC
+1. Model, View, Controller
+> Models: The model maintains the application logic -the key data structure for the program.
+
+> View: The View is responsible for the laying out the components and displaying information for the user.
+
+>Controller: The Controller is responsible for the listening to user input and take appropriate actions.
