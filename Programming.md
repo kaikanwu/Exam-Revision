@@ -16,6 +16,14 @@
 
 * [五、Inheritance](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#五inheritance)
 
+* [六、Recursive]()
+* [七、GUI]()
+    - JComponents
+    - diagrams
+* [八、MVC]()
+    - Model, View, Controller
+    - Roles
+
 
 
 # 一、OOP
