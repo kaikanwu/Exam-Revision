@@ -181,6 +181,28 @@ public class BankAccount implements Measurable{
 
 
 # 六、Recursive
+> Recursive 递归
+> a example of factorial funciton (阶乘函数)
+```java
+public static long factorial(int n){
+    if(n==1) return 1;
+    return n*factorial(n-1);
+}
+```
+>output
+```
+factorial(5)
+    factorial(4)
+        factorial(3)
+            factorial(2)
+                factorial(1)
+                return 1
+            return 2*1 =2
+        return 3*2 =6
+    return 4*6 =24
+return 5*24 = 120
+
+```
 
 # 七、GUI
 
