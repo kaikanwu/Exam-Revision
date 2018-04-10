@@ -109,7 +109,7 @@ public static void main(String[] args){
 
 > static variable： static声明独立于对象的静态变量，无论一个类实例化多少对象，它的静态变量只有一份拷贝。 静态变量也被称为类变量。局部变量不能被声明为 static 变量。
 
-> static method： static 声明独立于对象的静态方法。静态方法不能使用类的非静态变量(因为静态变量在类加载时就已经生成，而非静态变量在创建实例对象时才生成)。静态方法从参数列表得到数据，然后计算这些数据。
+> static method： static 声明独立于对象的静态方法。静态方法不能使用类的非静态变量(因为静态变量在类加载时就已经生成,而非静态变量在创建实例对象时才生成)。静态方法从参数列表得到数据，然后计算这些数据。
 
 > 访问静态变量和静态方法：
 classname.staticmethodname, classname.staticvariablename
