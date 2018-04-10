@@ -30,20 +30,187 @@
 > Object Oriented Programming
 
 # 二、Keywords
-> (qualifier) 关键词，限定词
-## private
+> 1.访问控制修饰符: private, public, protected, defult
 
-> The qualifier “private” means that the method can be used only in the class in which it is declared. 
+> 2.非访问修饰符: static, final, abstract, synchronized, volatile
+
+
+> (qualifier) 关键词，限定词
+
+
+
+```
+            | Class | Package | Subclass | Subclass | World
+            |       |         |(same pkg)|(diff pkg)| 
+————————————+———————+—————————+——————————+——————————+————————
+public      |   +   |    +    |    +     |     +    |   +     
+————————————+———————+—————————+——————————+——————————+————————
+protected   |   +   |    +    |    +     |     +    |         
+————————————+———————+—————————+——————————+——————————+————————
+no modifier |   +   |    +    |    +     |          |    
+————————————+———————+—————————+——————————+——————————+————————
+private     |   +   |         |          |          |    
+
++ : accessible
+blank : not accessible
+no modifier = default (没有修饰符)
+```
+
+## deafult(没有修饰符)
+使用默认访问修饰符声明的变量和方法，对同一个包内的类是可见的。**接口里的变量都隐式声明为 public static final**,而接口里的方法默认情况下访问权限为 public。
+
+```java
+String s = "123";
+boolean process(){
+    return true;
+}
+```
+
+## private
+> *can be used*: **method, variable**
+
+The qualifier “private” means that the method(variable) can be used only in the class in which it is declared. 
+
+Private variable can be get/set by get/set method
+```java
+public class Logger{
+    private String format;
+    //get
+    public String getFormat(){
+        return this.format;
+    }
+    //set
+    public String setFromat(String format){
+        this.format = format;
+
+    }
+}
+```
+
+## public
+> can be used: **class, interface, method, variable**
+```java
+public static void main(String[] args){
+    //
+}
+```
+
+## protected
+> can be used: **method, variable**
+
+>can be see in subclass and same package
+被protected修饰的成员对于本包和其子类可见
+
 
 ## static
+> can be used: **variable, method**
 
 >  The qualifier “static” means that the method is a member of the class in which it is defined, and not of any object of that class. (In particular it is not necessary to create an object of the class in order to use the method.) 
 
+> static variable： static声明独立于对象的静态变量，无论一个类实例化多少对象，它的静态变量只有一份拷贝。 静态变量也被称为类变量。局部变量不能被声明为 static 变量。
+
+> static method： static 声明独立于对象的静态方法。静态方法不能使用类的非静态变量(因为静态变量在类加载时就已经生成，而非静态变量在创建实例对象时才生成)。静态方法从参数列表得到数据，然后计算这些数据。
+
+> 访问静态变量和静态方法：
+classname.staticmethodname, classname.staticvariablename
+```java
+public class InstanceCounter{
+    private static int numInstances = 0;
+
+    protected static int getCount(){
+        return numInstances;
+    }
+}
+
+```
+
 ## final
 * final method
+>类中的 final 方法可以被子类继承，但是不能被子类修改。声明 final 方法的主要目的是防止该方法的内容被修改。
+```java
+public class Test{
+    public final void testmethod(){
+    //内容可以使用，但是不能修改
+    }
+}
+```
 * final variables
+> final 变量能被显式地初始化并且只能初始化一次。被声明为 final 的对象的引用不能指向不同的对象。但是 final 对象里的数据可以被改变。也就是说 final 对象的引用不能改变，但是里面的值可以改变。
+final 修饰符通常和 static 修饰符一起使用来创建类常量。
+```java
+public class Test{
+    final int i = 6;
+    // 和 static一起声明-->常量
+    public static final int n = 99;
+    static fianl String s = "hello";
+
+}
+```
 
 
+
+
+* final class
+>final 类不能被继承，没有类能够继承 final 类的任何特性。
+> cannot be extend
+
+```java
+//final class
+public final class Test{
+    //
+}
+```
+
+## abstract
+> can be used: **class, method**
+* abstract class
+> 抽象类**不能用来实例化对象，声明抽象类的唯一目的是为了将来对该类进行扩充**。
+一个类不能同时被 abstract 和 final 修饰。**如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误**。
+抽象类可以包含抽象方法和非抽象方法。
+
+```java
+// abstract class
+abstract class Test{
+    private String name;
+    public int number;
+    public void eat();
+    //abstract method
+    public abstract void go();
+    pub 
+}
+```
+* abstract method
+抽象方法是一种没有任何实现的方法，该方法的的具体实现由子类提供。
+抽象方法不能被声明成 final 和 static。
+任何继承抽象类的子类必须实现父类的所有抽象方法，除非该子类也是抽象类。
+如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法。
+抽象方法的声明以分号结尾，例如：public abstract sample(); 。
+```java
+public abstract class SuperTest{
+    //抽象方法没有具体实现
+    abstract void m ();
+
+}
+
+
+public class Test extends SuperTest{
+    void m(){
+        //在子类中具体实现 父类中的抽象方法
+    }
+}
+
+```
+
+
+* synchronized
+> can be used: **method**
+synchronized 关键字声明的方法同一时间只能被一个线程访问。synchronized 修饰符可以应用于四个访问修饰符。
+
+```
+public synchronized void test(){
+    //
+}
+```
 
 
 
@@ -181,7 +348,8 @@ public class BankAccount implements Measurable{
 
 
 # 六、Recursive
-> Recursive 递归
+> Recursive(递归)
+
 > a example of factorial funciton (阶乘函数)
 ```java
 public static long factorial(int n){
