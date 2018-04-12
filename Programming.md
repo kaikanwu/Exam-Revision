@@ -1,16 +1,18 @@
+#
+
 * [一、Object Oriented Programming](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#一oop)
 
 * [二、Keywords](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#二keywords)
-    - private
-    - static
-    - protected
-    - final
+  * private
+  * static
+  * protected
+  * final
 
 * [三、statement](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#三statement)
-    - if
-    - while 
-    - [for](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#for-语句)
-    - [switch](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#switch-语句)
+  * if
+  * while
+  * [for](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#for-语句)
+  * [switch](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#switch-语句)
 
 * [四、Interface](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#四interfaces)
 
@@ -18,45 +20,41 @@
 
 * [六、Recursive](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#六recursive)
 * [七、GUI](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#七gui)
-    - JComponents
-    - diagrams
+  * JComponents
+  * diagrams
 * [八、MVC](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#八mvc)
-    - Model, View, Controller
-    - Roles
+  * Model, View, Controller
+  * Roles
 
+## 一、OOP ##
 
-
-# 一、OOP
 > Object Oriented Programming
 
-# 二、Keywords
-> 1.访问控制修饰符: private, public, protected, defult
+## 二、Keywords ##
 
-> 2.非访问修饰符: static, final, abstract, synchronized, volatile
+> 1. 访问控制修饰符: private, public, protected, default
+> 2. 非访问修饰符: static, final, abstract, synchronized, volatile
+> 3. (qualifier) 关键词，限定词
 
-
-> (qualifier) 关键词，限定词
-
-
-
-```
+```form
             | Class | Package | Subclass | Subclass | World
-            |       |         |(same pkg)|(diff pkg)| 
+            |       |         |(same pkg)|(diff pkg)|
 ————————————+———————+—————————+——————————+——————————+————————
-public      |   +   |    +    |    +     |     +    |   +     
+public      |   +   |    +    |    +     |     +    |   +
 ————————————+———————+—————————+——————————+——————————+————————
-protected   |   +   |    +    |    +     |     +    |         
+protected   |   +   |    +    |    +     |     +    |
 ————————————+———————+—————————+——————————+——————————+————————
-no modifier |   +   |    +    |    +     |          |    
+no modifier |   +   |    +    |    +     |          |
 ————————————+———————+—————————+——————————+——————————+————————
-private     |   +   |         |          |          |    
+private     |   +   |         |          |          |
 
 + : accessible
 blank : not accessible
 no modifier = default (没有修饰符)
 ```
 
-## deafult(没有修饰符)
+### default(没有修饰符) ###
+
 使用默认访问修饰符声明的变量和方法，对同一个包内的类是可见的。**接口里的变量都隐式声明为 public static final**,而接口里的方法默认情况下访问权限为 public。
 
 ```java
@@ -66,12 +64,14 @@ boolean process(){
 }
 ```
 
-## private
+### private ###
+
 > *can be used*: **method, variable**
 
-The qualifier “private” means that the method(variable) can be used only in the class in which it is declared. 
+The qualifier “private” means that the method(variable) can be used only in the class in which it is declared.
 
 Private variable can be get/set by get/set method
+
 ```java
 public class Logger{
     private String format;
@@ -80,39 +80,40 @@ public class Logger{
         return this.format;
     }
     //set
-    public String setFromat(String format){
+    public void setFromat(String format){
         this.format = format;
 
     }
 }
 ```
 
-## public
+### public ###
+
 > can be used: **class, interface, method, variable**
+
 ```java
 public static void main(String[] args){
     //
 }
 ```
 
-## protected
-> can be used: **method, variable**
+### protected ###
 
->can be see in subclass and same package
-被protected修饰的成员对于本包和其子类可见
+> 1. can be used: **method, variable**
+> 2. can be see in subclass and same package(被protected修饰的成员对于本包和其子类可见)
 
+### static ###
 
-## static
 > can be used: **variable, method**
 
->  The qualifier “static” means that the method is a member of the class in which it is defined, and not of any object of that class. (In particular it is not necessary to create an object of the class in order to use the method.) 
+1. The qualifier “static” means that the method is a member of the class in which it is defined, and not of any object of that class. (In particular it is not necessary to create an object of the class in order to use the method.)
 
-> static variable： static声明独立于对象的静态变量，无论一个类实例化多少对象，它的静态变量只有一份拷贝。 静态变量也被称为类变量。局部变量不能被声明为 static 变量。
+2. static variable： static声明独立于对象的静态变量，无论一个类实例化多少对象，它的静态变量只有一份拷贝。 静态变量也被称为类变量。局部变量不能被声明为 static 变量。
 
-> static method： static 声明独立于对象的静态方法。静态方法不能使用类的非静态变量(因为静态变量在类加载时就已经生成,而非静态变量在创建实例对象时才生成)。静态方法从参数列表得到数据，然后计算这些数据。
+3. static method： static 声明独立于对象的静态方法。静态方法不能使用类的非静态变量(因为静态变量在类加载时就已经生成,而非静态变量在创建实例对象时才生成)。静态方法从参数列表得到数据，然后计算这些数据。
 
-> 访问静态变量和静态方法：
-classname.staticmethodname, classname.staticvariablename
+4. 访问静态变量和静态方法：classname.staticmethodname, classname.staticvariablename
+
 ```java
 public class InstanceCounter{
     private static int numInstances = 0;
@@ -124,9 +125,12 @@ public class InstanceCounter{
 
 ```
 
-## final
+### final ###
+
 * final method
+
 >类中的 final 方法可以被子类继承，但是不能被子类修改。声明 final 方法的主要目的是防止该方法的内容被修改。
+
 ```java
 public class Test{
     public final void testmethod(){
@@ -134,9 +138,12 @@ public class Test{
     }
 }
 ```
+
 * final variables
+
 > final 变量能被显式地初始化并且只能初始化一次。被声明为 final 的对象的引用不能指向不同的对象。但是 final 对象里的数据可以被改变。也就是说 final 对象的引用不能改变，但是里面的值可以改变。
 final 修饰符通常和 static 修饰符一起使用来创建类常量。
+
 ```java
 public class Test{
     final int i = 6;
@@ -147,10 +154,8 @@ public class Test{
 }
 ```
 
-
-
-
 * final class
+
 >final 类不能被继承，没有类能够继承 final 类的任何特性。
 > cannot be extend
 
@@ -161,7 +166,8 @@ public final class Test{
 }
 ```
 
-## abstract
+### abstract ###
+
 > can be used: **class, method**
 * abstract class
 > 抽象类**不能用来实例化对象，声明抽象类的唯一目的是为了将来对该类进行扩充**。
@@ -176,15 +182,17 @@ abstract class Test{
     public void eat();
     //abstract method
     public abstract void go();
-    pub 
 }
 ```
+
 * abstract method
+
 抽象方法是一种没有任何实现的方法，该方法的的具体实现由子类提供。
 抽象方法不能被声明成 final 和 static。
 任何继承抽象类的子类必须实现父类的所有抽象方法，除非该子类也是抽象类。
 如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法。
 抽象方法的声明以分号结尾，例如：public abstract sample(); 。
+
 ```java
 public abstract class SuperTest{
     //抽象方法没有具体实现
@@ -201,42 +209,48 @@ public class Test extends SuperTest{
 
 ```
 
-
 * synchronized
+
 > can be used: **method**
 synchronized 关键字声明的方法同一时间只能被一个线程访问。synchronized 修饰符可以应用于四个访问修饰符。
 
-```
+```java
 public synchronized void test(){
     //
 }
 ```
 
+## 三、statement ##
 
+### for 语句 ###
 
-# 三、statement
-
-## for 语句 
-```
+```java
 for(initializaiton;termination; increment){
     statement(s)
 }
 ```
+
 * examples:
-1. 基础
+
+1.基础
+
 ```java
 for(int i = 0; i < 100; i++){
     ...
     System.out.println("Count is: " + i );
 }
 ```
-2. infinate loop 无限循环
+
+2.infinate loop 无限循环
+
 ```java
 for(;;){
     //code
 }
 ```
-3. 遍历数组
+
+3.遍历数组
+
 ```java
 // used for array
 
@@ -252,7 +266,7 @@ for(int x : numbers){
 // ...
 ```
 
-## switch 语句
+#### switch 语句 ###
 
 ```java
 
@@ -274,7 +288,6 @@ public class SwitchDemo {
             case 8:  monthString = "August";
                      break;
             ...
-         
             default: monthString = "Invalid month";
                      break;
         }
@@ -283,7 +296,8 @@ public class SwitchDemo {
 }
 ```
 
-# 四、Interfaces
+## 四、Interfaces ##
+
 > Using interfaces to make your code re-useable
 1. Interface declaration （接口声明）
 
@@ -293,8 +307,6 @@ public interface Measurable{
     int getMeasure();
 }
 ```
-
-
 
 ```java
 // example 2 with parameters
@@ -317,11 +329,9 @@ public interface OperateCar {
    // more method signatures
 }
 ```
-2. Implements an interface (实现一个接口）
+
+2.Implements an interface (实现一个接口）
 > keyworkds: **implements**
-
-> 
-
 > class **must** define all the methods 必须重写接口中的所有方法
 
 ```java
@@ -333,32 +343,38 @@ public class BankAccount implements Measurable{
     // could add additional methods
 }
 ```
-3. Interface vs. classes
-    * All methods in an interface type are **abstract**; they don’t have an implementation 
+
+3.Interface vs. classes
+
+    * All methods in an interface type are **abstract**; they don’t have an implementation
+
     * All methods in an interface type are automatically public
+
     * An interface type does not have instance fields (though it can have constants)
-4. Other 
+
+4.Other
     > A class can implement more than one interface
 
+## 五、Inheritance ##
 
-# 五、Inheritance
-> 1. Reuse and extend your code 
+> 1. Reuse and extend your code
 > 2. Inheritance hierarchies
 
+## 六、Recursive ##
 
+Recursive(递归)
+a example of factorial funciton (阶乘函数):
 
-# 六、Recursive
-> Recursive(递归)
-
-> a example of factorial funciton (阶乘函数)
 ```java
 public static long factorial(int n){
     if(n==1) return 1;
     return n*factorial(n-1);
 }
 ```
+
 >output
-```
+
+```java
 factorial(5)
     factorial(4)
         factorial(3)
@@ -372,12 +388,14 @@ return 5*24 = 120
 
 ```
 
-# 七、GUI
+## 七、GUI ##
 
-# 八、MVC
+## 八、MVC ##
+
 1. Model, View, Controller
-> Models: The model maintains the application logic -the key data structure for the program.
 
-> View: The View is responsible for the laying out the components and displaying information for the user.
+* Models: The model maintains the application logic -the key data structure for the program.
 
->Controller: The Controller is responsible for the listening to user input and take appropriate actions.
+* View: The View is responsible for the laying out the components and displaying information for the user.
+
+* Controller: The Controller is responsible for the listening to user input and take appropriate actions.

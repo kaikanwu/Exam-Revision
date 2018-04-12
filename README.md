@@ -13,4 +13,3 @@ Detail will update later
 * [Internet Technology](https://github.com/kaikanwu/Exam-Revision/blob/master/IT.md)
 * [Software Engineering](https://github.com/kaikanwu/Exam-Revision/blob/master/SE.md)
 * [Algorithms and Data Structure](https://github.com/kaikanwu/Exam-Revision/blob/master/ADS.md)
-
