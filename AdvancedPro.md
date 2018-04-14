@@ -169,12 +169,204 @@ for(int i = 0; i < 5; i++){
 
 * Running things in parallel should give us speed improvements.
 
+### Race condition
+
+**A race condition occurs when two or more threads can access shared data and they try to change it at the same time.** Because the thread scheduling algortithms can swap between threads at any time, you don't know the order in which the threads will attempt to access the shared data.
+
+**To avoid Race condition:**
+1.The easiest way is with synchonized blocks and methods.
+> When any thread is volking a synchronized method, all other threads trying to are paused until it has finished.
+
+```Java
+public void run(){
+    for(int i = 0; i< n; i ++){
+        synchronized(count){
+            count.increment();
+        }
+    }
+
+}
+```
+
+> These code causes the thread to lock the **count** object
+No other threads can modify **count** when the thread is in this block
+
+2.Another approach involves creating Lock objects.
+
+```Java
+public static class MyCounter{
+    private int count = 0;
+    private ReentrantLock counterLock = new ReentrantLock();
+    public void incream(){
+        counterLock.lock();
+        count ++;
+        counterLock.unlock();
+    }
+}
+```
+
+> When counterLock is locked, no other thread can lock it unitl it has been unlocked.
+
+**There is a problem: between lock() and unlock(), the code may throws an exception that make the unlock() never happens.**
+
+So we need a better way use lock object.
+The following code make sure the lock will release finally.
+
+```Java
+someLock.lock();
+try{
+// some code
+
+}catch(){
+}
+finally{
+    someLock.unlock();
+}
+```
+
 ### Deadlocks
 
 What is the deadlock?
-> Two threads are both waiting for one another to release a lock. In this situation, the program will hang indefinitely.
 
+> Two or more threads are both waiting for each other to release a lock. In this situation, the program will hang indefinitely.(will block forever)
+
+### Conditions
+
+Definition: **Conditions allow threads to temporarily unlock locks whilst they await some condition to be fulfiled**
+
+```Java
+private ReentrantLock counterLock = new ReentrantLock();
+
+private Condition bigEnough = counterLock.newCondition();
+```
+
+> Threads can await the condition through the Condition.await() method
+
+```Java
+public void decrement(int amount){
+    counterLock.lock();
+    try{
+        while(count < amount){
+        bigEnough.await();
+        }
+        count -= amount;
+    }catch(InterruptedException e){
+        //fall through
+    }finally{
+        counterLock.unlock();
+    }
+}
+```
+
+### Threads in Swing
+
+SwingWorker
+
+**Why Swing isn't Thread safe**
+[http://www.asjava.com/swing/why-isn%E2%80%99t-the-swing-toolkit-multi-thread-safe/](http://www.asjava.com/swing/why-isn%E2%80%99t-the-swing-toolkit-multi-thread-safe/)
 
 ## 二、Client-server system
+
+### Distributed Systems 分布式系统
+
+**Threads**: Code run in multiple processes on one machine
+
+**Distributed System**: Processes communicating across machines
+
+### Servers and Clients
+
+Java inbuilt objects:
+**ServerSocket --> Server**
+**Socket --> Client**
+
+#### Building a server
+
+```Java
+import java.net.*;
+import java.io.*;
+
+public class SimpleServer{
+    // The PORT here is an abstract thing, they are produced in software
+    private static int PORT = 8765;
+    public static void main(String[] args) throws IOException{
+        //make a server object
+        ServerSocket listener = new ServerSocket(PORT);
+        // wait for a connection and create a client
+        Socket client = listener.accept();
+        // close the connection
+        client.close();
+
+    }
+}
+```
+
+#### IP addresses and ports
+
+IP: **Internet Protocal** is a set of rules used for connecting devices in a network
+
+All devices on the network are assigned an IP address.
+
+e.g. 192.167.1.122
+
+* each portion goes form 0 - 255
+
+* special address: 127.0.0.1 - localhost: use this address to access your own machine form your own machine
+
+* find your IP address: **ifconfig**
+
+#### PORT
+
+```Java
+private static int PORT = 8765;
+
+```
+
+> The PORT here must be unused.
+Client need to know which port to access the server
+Commonly used ports:
+20,21: FTP
+22: SSH
+80: HTTP
+
+#### Building a client
+
+```Java
+import java.net.*;
+import java.io.*;
+
+public class SimpleClient{
+    private static int PORT = 8765;
+    private static String server = "127.0.0.1";
+    public static void main(String[] args) throws IOException{
+        // make a socket and try and connect
+        Socket socket = new Socket(server, PORT);
+        // close the socket
+        socket.close();
+    }
+}
+```
+
+#### Sending message form the Server to Client
+
+Useing the following Stream classes:
+
+* PrintWriter
+
+```Java
+PrintWriter writer = new PrintWriter(client.getOutputStream(), true);
+
+```
+
+* BufferedReader
+
+```Java
+BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+```
+
+1. In the Server we create a PrintWriter
+
+
+
+
 
 ## 三、Design Patterns
