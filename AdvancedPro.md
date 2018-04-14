@@ -352,21 +352,39 @@ Useing the following Stream classes:
 
 * PrintWriter
 
+In the Server we create a PrintWriter
+
 ```Java
 PrintWriter writer = new PrintWriter(client.getOutputStream(), true);
 
 ```
 
-* BufferedReader
+* BufferedReader: in the client
 
 ```Java
 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 ```
 
-1. In the Server we create a PrintWriter
-
-
-
-
-
 ## 三、Design Patterns
+
+### What are patterns
+
+Sets of rules that, if followed, allow easy code understanding and re-use
+
+Separation of tasks: iterators decouple algorithms from data objects
+
+Can operate at many levels:
+whole applications: (Model-View-Controller)
+small parts of an application(Iterators)迭代器
+
+### Some userful patterns
+
+* Iterators Pattern 迭代器模式
+* The composite pattern 组合模式
+* Factory methods
+* Factory pattern 工厂模式
+* Visitor pattern 访问者模式
+* The Proxy pattern 代理模式
+* The decorator pattern 装饰器模式
+* The observer pattern 观察者模式
+
