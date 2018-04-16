@@ -2,6 +2,8 @@
 
 * [一、Object Oriented Programming](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#一oop)
   * Constructor
+  * Polymorphism
+  * Collection
 
 * [二、Keywords](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#二keywords)
   * private
@@ -57,6 +59,64 @@ public class Test{
 
 }
 ```
+
+### Polymorphism ###
+
+### Collection ###
+
+Definition:
+Collection是存储对象的容器，OOP语言对事物的体现都是以对象的方式，所以为了方便对多个对象的操作，存储对象，集合是存储对象的最常用的一种方式。
+
+> **集合可以存储任意类型的对象，而且长度是可变的**。如果在写程序时，无法预知需要多少个对象，那个这时候使用数组就不太方便**（数组在声明是就规定好了长度和数据类型）**，集合在这个时候就可以解决问题。
+
+集合可以做什么：
+
+1. 将对象**添加**到集合 add
+1. 从集合中**删除**对象 remove
+1. 从集合中**查找**对象
+1. 从集合中修改一个对象（其实就是查找删除添加？）
+
+> **集合和数组中存放的都是对象的引用(reference)，而不是对象本身。**
+
+```Java
+---|Collection: 单列集合
+            ---|List: 有存储顺序, 可重复
+                ---|ArrayList:  数组实现, 查找快, 增删慢
+                            由于是数组实现, 在增和删的时候会牵扯到数组增容, 以及拷贝元素. 所以慢。数组是可以直接 按索引查找, 所以查找时较快.
+
+                ---|LinkedList: 链表实现, 增删快, 查找慢
+                            由于链表实现, 增加时只要让前一个元素记住自己就可以, 删除时让前一个元素记住后一个元素, 后一个元素记住前一个元素. 这样的增删效率较高但查询时需要一个一个的遍历, 所以效率较低
+ 
+                ---|Vector: 和ArrayList原理相同, 但线程安全,效率略低
+                             和ArrayList实现方式相同, 但考虑了线程安全问题, 所以效率略低
+
+            ---|Set: 无存储顺序, 不可重复
+                ---|HashSet
+                ---|TreeSet
+                ---|LinkedHashSet
+---| Map: 键值对
+        ---|HashMap
+        ---|TreeMap
+        ---|HashTable
+        ---|LinkedHashMap
+```
+
+为什么出现这么多集合容器，因为每一个容器对数据的存储方式不同，这种存储方式称之为数据结构（data structure）。
+
+什么时候使用什么样的集合：
+
+|Collection |我们需要保存若干个对象的时候使用集合  |
+|---------|---------|
+|List     |  如果我们需要保留存储顺序，并且保留重复元素，使用List.  1.其中如果查询较多，使用ArrayList。 2.如果存储较多，使用LinkedList。 3.如果需要线程安全，那么使用Vector。       |
+|Set     |   如果我们不需要保留存储顺序，并且需要去掉重复元素，那么使用Set。 1.如果我们需要将元素排序，那么使用TreeSet。2.如果我们不需要排序，使用HashSet,HashSet比TreeSet效率更高。 3.s如果我们需要保留存储顺序，又要过滤重复元素，那么使用LinkedHashSet      |
+
+
+
+
+#### 
+
+
+
 
 ## 二、Keywords ##
 

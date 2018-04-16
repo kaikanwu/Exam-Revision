@@ -379,12 +379,59 @@ small parts of an application(Iterators)迭代器
 
 ### Some userful patterns
 
-* Iterators Pattern 迭代器模式
-* The composite pattern 组合模式
-* Factory methods
-* Factory pattern 工厂模式
-* Visitor pattern 访问者模式
-* The Proxy pattern 代理模式
-* The decorator pattern 装饰器模式
-* The observer pattern 观察者模式
+#### Iterators Pattern 迭代器模式
+
+这种模式用于顺序访问集合对象的元素，不需要知道集合对象的底层表示。
+（迭代器可能是Java 中使用最多的一种模式）
+
+说明迭代器之前先得说说**集合collection**, 集合可以看成一个可以包容对象的容器，例如 List, Set, Map, 甚至数组都可以叫做集合，**迭代器的作用就是把容器中的对象一个一个遍历出来**
+
+Iterable接口：Iteratoriterator();
+Iterator接口：boolean hasNext(); E next(); void remove();
+
+Many algorithms require the ability to move through a collection of objects.
+
+* Finding
+* Sorting, etc
+
+#### Composite pattern 组合模式
+
+In some application, we might need to **perform the same operation on objects or groups of objects.**
+Example:
+
+* **file system**: computing the size of files and folders of files
+* items and groups of items in an **online shop**
+
+##### Interfaces in the composite pattern
+
+1. component:
+2. leaf
+3. composite
+
+**何时采用组合模式**：
+
+     1.需求重要体现部分与整体的层次结构时
+
+     2.你希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。
+
+#### Factory pattern 工厂模式
+
+工厂模式属于创建型模式，提供了一种创建对象的最佳方式。
+在Factory pattern中，**我们在创建爱你对象时不会对客户端暴露创建逻辑，并且使通过使用一个共同的接口来指向新创建的对象。**
+
+**意图**：定义一个创建对象的接口，让其子类自己决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行。
+
+**主要解决**：主要解决接口选择的问题。
+
+**何时使用**：我们明确地计划不同条件下创建不同实例时。
+
+**如何解决**：让其子类实现工厂接口，返回的也是一个抽象的产品。
+
+#### Visitor pattern 访问者模式
+
+#### Proxy pattern 代理模式
+
+#### Decorator pattern 装饰器模式
+
+#### Observer pattern 观察者模式
 
