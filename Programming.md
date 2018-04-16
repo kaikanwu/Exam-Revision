@@ -1,6 +1,7 @@
 #
 
 * [一、Object Oriented Programming](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#一oop)
+  * Constructor
 
 * [二、Keywords](https://github.com/kaikanwu/Exam-Revision/blob/master/Programming.md#二keywords)
   * private
@@ -29,6 +30,33 @@
 ## 一、OOP ##
 
 > Object Oriented Programming
+
+### Constructor ###
+
+构造器可以有任何访问的修饰符，public, private, protected 或者没有。 不同于实例方法，constructor不能有任何非访问性质的修饰符： static, final, synchronized, abstract.
+
+>解释：构造方法用于初始化一个实例对象，所以static修饰是没有任何意义的;多个线程不会同时创建内存地址相同的同一个对象，所以synchronized修饰没有意义;
+构造方法不能被子类继承，所以final和abstract修饰没有意义。
+
+**Constructor是没有返回类型的（String, int...)，void 也不行。** 相比较实例方法可以返回任何类型的值或者无返回值void.
+
+**Constructor的命名需要和类名相同，所以构造器方法的第一个字母应该是大写。**（相对的，实例方法的方法名一般都是小写字母）
+
+当我们没有明确写出构造方法的时候，Java类会有一个public修饰的默认构造方法（不显示，没有参数，方法体为空）。 如果我们有重写构造方法，默认构造方法就不会存在
+
+```Java
+public class Test{
+    // constructor
+    public Test(String s){
+    }
+
+    public static void main(String[] args){
+    //
+    }
+
+
+}
+```
 
 ## 二、Keywords ##
 
@@ -141,7 +169,7 @@ public class Test{
 
 * final variables
 
-> final 变量能被显式地初始化并且只能初始化一次。被声明为 final 的对象的引用不能指向不同的对象。但是 final 对象里的数据可以被改变。也就是说 final 对象的引用不能改变，但是里面的值可以改变。
+> final 变量能被显式地初始化并且只能初始化一次。**被声明为 final 的对象的引用不能指向不同的对象。但是 final 对象里的数据可以被改变。也就是说 final 对象的引用不能改变，但是里面的值可以改变**。
 final 修饰符通常和 static 修饰符一起使用来创建类常量。
 
 ```java
@@ -189,7 +217,7 @@ abstract class Test{
 
 抽象方法是一种没有任何实现的方法，该方法的的具体实现由子类提供。
 抽象方法不能被声明成 final 和 static。
-任何继承抽象类的子类必须实现父类的所有抽象方法，除非该子类也是抽象类。
+任何继承抽象类的子类必须实现父类的所有抽象方法，**除非该子类也是抽象类。**
 如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法。
 抽象方法的声明以分号结尾，例如：public abstract sample(); 。
 
