@@ -58,7 +58,7 @@ SQL is an ANSI (American National Standards
 Institute) Standard, but there are slightly
 different versions (flavours).
 
-###Common SQL:
+Common SQL:
 
 * Oracle
 * MySQL
@@ -132,7 +132,7 @@ SELECT * FROM Websites WHERE country='CN';
 SELECT * FROM Websites WHERE id=1;
 ```
 
-注意**文本信息**这里使用的是**单引号**
+注意 **文本信息** 这里使用的是**单引号**
 数值则不需要加单引号
 
 ```SQL
@@ -188,7 +188,7 @@ SELECT * FROM Websites ORDER BY country, alexa;
 
 > 注意这里的输出结果，如果是条件是英文的时候，会按照ABC->XYZ的顺序排列。
 
-#### Functions
+#### Functions
 
 SQL 拥有很多可用于计算和计数的内建函数
 
