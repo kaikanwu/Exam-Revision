@@ -6,6 +6,8 @@
 
 Database: Database is a way of **storing information** in **an structured, logical way**.
 
+A Relational Database has tables which are linked using key attributes.
+
 Database Model:
 such as Relational Model
 
@@ -34,6 +36,19 @@ A primary key is **an attribute** in the table which can **be used to uniquely i
 
 Candidate Keys:
 Each table will normaly have several potential primary keys called candidate keys.
+
+### Foreign Keys
+
+外键
+An attribute in one table that uniquely identifies a row of annother table is a **foreign key**
+
+一个表中的Foreign Key指向另一个表中的Primary Key
+
+#### Referential Integrity
+
+Each foreign key (advisor in the Student table)
+needs to refer to an actual row in the table it
+refers to (lecturer table), this is called referential integrity.
 
 ### Database Schema
 
@@ -238,4 +253,127 @@ keywords LIMIT: only want a specific number of rows back.
 ```SQL
 SELECT fname,sname FROM student WHERE sname < 'Black' LIMIT 10;
 ```
+
+## More SQL
+
+### Joins
+
+连接（JOIN）
+SQL JOIN 子句用于把来自两个或多个表的行结合起来，基于这些表之间的共同字段。
+
+最常见的 JOIN 类型：SQL INNER JOIN（简单的 JOIN）。 SQL INNER JOIN 从多个表中返回满足 JOIN 条件的所有行。
+
+querying multiple tables 使用Join查询多个表格
+
+#### 其他的 SQL JOIN
+
+INNER JOIN: 如果表中有至少一个匹配，则返回行
+LEFT JOIN: 即使右表中没有匹配，也从左表中返回所有的行
+RIGHT JOIN: 即使左表中没有匹配，也从右表中返回所有的行
+FULL JOIN: 只要其中一个表中存在匹配，则返回行
+
+#### INNER JOIN ON
+
+INNER JOIN 关键字在表中存在至少一个匹配时返回行。
+Returns the rows where the join condition is met.
+
+> INNER JOIN 可以简化为 JOIN
+
+```SQL
+SELECT Order.number, Customer.company FROM Order INNER JOIN Customer ON Order.companyID=Customer.ID;
+```
+
+#### LEFT JOIN
+
+LEFT JOIN 关键字从左表（Websites）返回所有的行，即使右表（access_log）中没有匹配。
+
+Returns all the rows of table1 (left table) with the corresponding rows of table2 if the condition is met, or null if not.
+如果右表没有相对应的值，则返回NULL在结果表上。
+
+
+```SQL
+SELECT Website.name, access_log.count, access_log.date FROM Websites LEFT JOIN access_log ON Websites.id=access_log.site_id ORDER BY access_log.count DESC;
+```
+
+#### Aliases 别名
+
+Aliases are used to temporarily rename a table or column.
+创建别名是为了让命令的可读性更强
+
+**特别注意**使用别名后，输出的结果表显示的attribute也是重新命名后的别名
+
+```SQL
+//rename a table
+SELECT col FROM table1 AS temp_name;
+```
+
+```SQL
+//rename a column
+SELECT col  AS temp_name FROM table1;
+```
+
+```SQL
+SELECT name AS n, country AS c FROM Websites;
+```
+
+```SQL
+SELECT w.name, w.url, a.count, a.date FROM Websites AS w, access_log AS a WHERE a.site_id=w.id and w.name='tutorial';
+```
+
+在下面的情况下，使用别名很有用：
+
+在查询中涉及超过一个表
+在查询中使用了函数
+列名称很长或者可读性差
+需要把两个列或者多个列结合在一起
+
+### RIGHT JOIN
+
+Returns all the rows of table2 (to the right of the JOIN) with corresponding rows of table1 where the condition is met, null otherwise.
+
+其实与 LEFT JOIN 类似，只是保留的是JOIN右侧的表格
+
+```SQL
+SELECT s.name, l.name FROM Student AS s RIGHT JOIN Lecture AS l ON s.advisor=l.staffID;
+```
+
+### FULL OUTER JOIN
+
+Combines the results of left and right joins
+Returns all the rows from the left (table1) and right (table2) tables.
+
+FULL OUTER JOIN 关键字结合了 LEFT JOIN 和 RIGHT JOIN 的结果。
+> 注意使用FULL OUTER JOIN 的结果表中，表中行的排列应该按照同一个顺序，而不是简单的把LEFT JOIN 和RIGHT JOIN的结果结合起来（根据attribute来对应）。
+
+### SELF JOIN
+
+You can join a table to itself: i.e. compare a column in the table to another column in the same table
+Useful where a column is a foreign key corresponding to the table’s own primary key
+
+```SQL
+SELECT l.name, m.name FROM Lecture AS l SELF JOIN Lecture AS m ON l.manager = m.staffID;
+```
+
+### Sub-queries
+
+```SQL
+SELECT * FROM lecturer WHERE salary=(SELECT max(salary) FROM lecturer);
+```
+
+```SQL
+SELECT staffNo, fname,lname FROM Staff WHERE dept=(SELECT deptNum FROM departments WHERE address='14 Addison Road');
+```
+
+> 使用= 和 （） 来内嵌另一个SQL语句
+
+#### IN / NOT IN
+
+IN allows you to use multiple values in a
+WHERE clause
+
+```SQL
+SELECT fname, sname FROM Student WHERE programme IN(SELECT programmeid FROM programme WHERE name='Information Technology' OR name='Bioinformatics');
+```
+
+similar to NOT IN
 
