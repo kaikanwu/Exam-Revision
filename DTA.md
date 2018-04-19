@@ -101,7 +101,7 @@ SELECT name FROM student;
 
 > 注意结尾的分号 **;** （有些数据库系统要求SQL语句末端使用分号，来分隔每条SQL，我们这里默认使用）
 
-#### SELECT
+### SELECT
 
 SELECT 语句用于从数据库中选取数据。
 **结果被存储在一个结果表中，称为结果集**。
@@ -109,7 +109,6 @@ SELECT 语句用于从数据库中选取数据。
 ```SQL
 SELECT column_name FROM table_name WHERE condition_is_true;
 ```
-
 
 > SELECT * will return the complete rows
 
@@ -120,7 +119,7 @@ FROM – Find the table first.
 WHERE – Find the rows which satisfy
 the condition.
 
-#### SQL Case Sensitivity
+### SQL Case Sensitivity
 
 SQL commands are not case sensitive,**But data is.**
 
@@ -131,7 +130,7 @@ Table names start with a capital letter (e.g.
 Student)
 Column names are in lower case (e.g. name)
 
-#### SELECT DISTINCT
+### SELECT DISTINCT
 
 ```SQL
 SELECT DISTINCT fname FROM People;
@@ -140,14 +139,14 @@ SELECT DISTINCT fname FROM People;
 在表中，一个列可能会包含多个重复值，有时您也许希望仅仅列出不同（distinct）的值。
 DISTINCT **关键词用于返回唯一不同的值**
 
-#### WHERE, IN, BETWEEN
+### WHERE, IN, BETWEEN
 
 ```SQL
 SELECT * FROM Websites WHERE country='CN';
 SELECT * FROM Websites WHERE id=1;
 ```
 
-注意 **文本信息** 这里使用的是**单引号**
+注意**文本信息**这里使用的是**单引号**
 数值则不需要加单引号
 
 ```SQL
@@ -161,11 +160,11 @@ SELECT fname FROM People WHERE studentID BETWEEN 1 AND 30;
 > The range is inclusive, so in this example, 1 and 30 are in the range.
 **we can also use NOT IN and NOT BETWEEN**
 
-#### IS NULL, IS NOTNULL
+### IS NULL, IS NOTNULL
 
 NULL values represent **missing data**, it's different from an empty string or 0.
 
-#### AND, OR
+### AND, OR
 
 ```SQL
 SELECT studentID FROM Student WHERE fname='Sally' AND address='12 Hope Street';
@@ -173,13 +172,13 @@ SELECT studentID FROM Student WHERE fname='Sally' AND address='12 Hope Street';
 SELECT studentID FROM Student WHERE fname='Sally' OR fname='Lindsey';
 ```
 
-#### 结合 AND, OR
+### 结合 AND, OR
 
 ```SQL
 SELECT * FROM Websites WHERE alexa>15 AND (country='CN' OR country='USA');
 ```
 
-#### ORDER BY
+### ORDER BY
 
 ORDER BY 默认按照**升序**对记录进行排序 **ASC**
 **降序**： 使用 **DESC**关键字
@@ -203,11 +202,11 @@ SELECT * FROM Websites ORDER BY country, alexa;
 
 > 注意这里的输出结果，如果是条件是英文的时候，会按照ABC->XYZ的顺序排列。
 
-#### Functions
+### Functions
 
 SQL 拥有很多可用于计算和计数的内建函数
 
-##### SQL Aggregate
+#### SQL Aggregate
 
 Aggregate functions **return a single value.**
 
@@ -236,7 +235,7 @@ SELECT COUNT(DISTINCT salary) FROM Employee;
 SELECT COUNT(staffID) FROM Lecturer WHERE school='Philosophy';
 ```
 
-#### GROUP BY
+### GROUP BY
 
 Returns values for distinct groups, when used functions（GOURP BY语句需要结合一些聚合函数来使用，根据一个或多个列队结果来进行分组）
 
@@ -246,7 +245,7 @@ SELECT school, COUNT(studentID) FROM Student GROUP BY school;
 
 ```
 
-#### LIMIT
+### LIMIT
 
 keywords LIMIT: only want a specific number of rows back.
 
