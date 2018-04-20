@@ -440,23 +440,23 @@ multi-valued(contain more than one value): locations
 
 不同类型的attribute 有不同的图例表示
 
- ![drawing attributes](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/13569100.jpg)
+ ![drawing attributes](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/49628337.jpg)
 
 #### Deribed attributes
 
 衍生出的属性,并不实际存在
 e.g. Age can be derived form DOB
 
-![derived attributes](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/13167960.jpg)
+![derived attributes](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/33202207.jpg)
 
 > attribute总是和entity相关联
 
 ### Some Examples
 
-![example 1](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/21417705.jpg)
+![example 1](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/51031013.jpg)
 > 这里的订单不是entity，作为relationship比较好
 
-![examole 2](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/10207931.jpg)
+![examole 2](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/6988737.jpg)
 > 注意：这里的patient不需要出现
 
 ![example 3](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/35026713.jpg)
@@ -467,7 +467,7 @@ e.g. Age can be derived form DOB
 2.Recursive Relationships
 3.Relationships with attributes
 
-![relationships with attributes](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/55714884.jpg)
+![relationships with attributes](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/87915437.jpg)
 
 ### Cardinality(势)
 
@@ -483,6 +483,30 @@ e.g. Age can be derived form DOB
 
 ![manytomany](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/62164051.jpg)
 
+### Participation constraints on relationships
+
+participation can be total or partial
+
+total participation:
+![total](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/1165626.jpg)
+partial participation:
+![partial](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/30337730.jpg)
+
+### Weak entity types
+
+弱实体类型：Some entity types don’t have their own unique primary key, but are dependent on some other entity types to ensure their uniqueness – they are called weak entity types.（依赖关系）
+
+weak entity types require total participation(such as dependents)
+![draw weak entity types](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/34854775.jpg)
+
+#### Identifying relationships
+
+A combination of the Dependent name and the Employee NInumber will be unique
+
+In this case, Dependent name is called a partial key and Employee is called the identifying owner
+
+The relationship between Dependent and Employee is called an identifying relationship
+
 ### Basics Summary
 
 Entity – a real world object we wish to model
@@ -491,4 +515,38 @@ Attribute – a characteristic which describes an entity
 
 Relationship – links two or more entities
 
-### Weak Entity Types
+Attribute types - single valued, multi-valued, simple, composite, derived
+
+Relationship types - binary, ternary
+
+Relationships- can have multiple between entities, can be recursive, can have attributes
+
+Relationship cardinalities- 1:1, 1:N, M:N
+
+Participation: toal participation OR partial participation
+
+Weak entities - need partial keys
+
+![ER diagram notation](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/48643436.jpg)
+
+### Common Mistakes
+
+fan traps and chasm traps
+
+![fan](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/4683609.jpg)
+
+![fan solve](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/89489813.jpg)
+
+![chasm](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/41026741.jpg)
+
+![chasm solve](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/41026741.jpg)
+
+### Enterprise diagrams
+
+![enterprise](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/4369967.jpg)
+
+![schema1](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/46178647.jpg)
+
+![schema 2](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/5177401.jpg)
+
+![suggestion](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/75127790.jpg)
