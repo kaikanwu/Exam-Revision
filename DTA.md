@@ -442,6 +442,25 @@ multi-valued(contain more than one value): locations
 
  ![drawing attributes](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/13569100.jpg)
 
+#### Deribed attributes
+
+衍生出的属性,并不实际存在
+e.g. Age can be derived form DOB
+
+![derived attributes](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/13167960.jpg)
+
+> attribute总是和entity相关联
+
+### Some Examples
+
+![example 1](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/21417705.jpg)
+> 这里的订单不是entity，作为relationship比较好
+
+![examole 2](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/10207931.jpg)
+> 注意：这里的patient不需要出现
+
+![example 3](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/35026713.jpg)
+
 ### Basics Summary
 
 Entity – a real world object we wish to model
