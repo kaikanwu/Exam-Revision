@@ -461,6 +461,28 @@ e.g. Age can be derived form DOB
 
 ![example 3](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/35026713.jpg)
 
+### Different Relationships
+
+1.Multiple Relationships
+2.Recursive Relationships
+3.Relationships with attributes
+
+![relationships with attributes](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/55714884.jpg)
+
+### Cardinality(势)
+
+* one to one - 1:1 exactly one instance of each entity type cantake part in the relationship
+
+![onetone](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/90909538.jpg)
+
+* one to many - 1:N several entities of one type are associated with a single entity of another
+
+![onetomany](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/45293206.jpg)
+
+* many to many - M:N several entities of one type are associated with several entities of the other
+
+![manytomany](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/62164051.jpg)
+
 ### Basics Summary
 
 Entity – a real world object we wish to model
