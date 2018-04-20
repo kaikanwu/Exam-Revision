@@ -376,3 +376,78 @@ SELECT fname, sname FROM Student WHERE programme IN(SELECT programmeid FROM prog
 
 similar to NOT IN
 
+### Views
+
+A view is a virtual table based on the result-set of a SQL statement.
+
+They don't contain any data themselves.
+
+#### Views Syntax
+
+```SQL
+CREATE VIEW CSstaffView AS SELECT * FROM Lecturer WHERE school='Computing Science';
+```
+
+#### Using Views
+
+Once a view has been created, it can be queried like a table.
+
+```SQL
+SELECT * FROM CSstaffView;
+```
+
+## Entity Relationship Diagrams
+
+ER Diagrams(实体关系图): A graphical representation of an entity relationship model.
+
+### Entity Type
+
+An entity type is a real world object we want to store information about, e.g. a Student, Course, Staff
+
+All entity types have some properties that give
+them their identity e.g.
+– Staff -name, address, staff number, national
+insurance number
+– Course- the title, the director, the set of modules,
+– Module - the lecturer, the meeting room, the
+times of the lecture
+
+### Relationships
+
+Identify the relationships from the Company Example:
+Department controls Project
+Employee works for Department
+Employee manages Department
+Employee works on Project
+Employee supervises Employee
+Employee has Dependents
+
+### Attributes（属性，特性）
+
+Characteristics of the entities which can be used
+to describe the entity
+– E.g. student has a name, student ID, DOB etc.
+
+#### Different types of attribute
+
+simple(automic): such as age, sex 由单个不可分割的值组成
+composite: address, DOB 由多个成分的值组成
+
+OR
+
+single-valued(contains one value): age, title
+multi-valued(contain more than one value): locations
+
+不同类型的attribute 有不同的图例表示
+
+ ![drawing attributes](http://kkimages.oss-cn-shanghai.aliyuncs.com/18-4-20/13569100.jpg)
+
+### Basics Summary
+
+Entity – a real world object we wish to model
+
+Attribute – a characteristic which describes an entity
+
+Relationship – links two or more entities
+
+### Weak Entity Types
