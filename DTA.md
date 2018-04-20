@@ -1,7 +1,5 @@
 # DTA
 
-* Relational Databases
-
 ## Relational Databases
 
 Database: Database is a way of **storing information** in **an structured, logical way**.
@@ -14,7 +12,7 @@ such as Relational Model
 * Database consist of tables, which are linked
 * Each table has a name
 
-### Attributes and Attributes Type
+Attributes and Attributes Type
 
 |Attributes  |Attributes Type  |
 |---------|---------|
@@ -23,7 +21,7 @@ such as Relational Model
 |Address     |      Text   |
 |DOB     |    Data     |
 
-### Table
+Table
 
 * each row should be unique(no duplicate rows)
 
@@ -365,7 +363,7 @@ SELECT staffNo, fname,lname FROM Staff WHERE dept=(SELECT deptNum FROM departmen
 
 > 使用= 和 （） 来内嵌另一个SQL语句
 
-#### IN / NOT IN
+### IN / NOT IN
 
 IN allows you to use multiple values in a
 WHERE clause
@@ -550,3 +548,51 @@ fan traps and chasm traps
 ![schema 2](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/5177401.jpg)
 
 ![suggestion](http://kktestimage.oss-eu-central-1.aliyuncs.com/18-4-20/75127790.jpg)
+
+## Data Definition Language
+
+数据定义语言 (Data Definition Language, DDL) 是SQL语言集中，负责数据结构定义与数据库对象定义的语言。
+
+### CREATE
+
+```SQL
+CREATE DATABASE dbname;
+```
+
+```SQL
+CREATE TABLE table_name (col1_name datatype, col2_name datatpye, col3_name datatype);
+```
+
+Data Type: CHARACTER(n), VARCHAR(n), INTEGER, INT, SMALLINT,DATE, NUMERIC(P,S)
+
+VARCHAR(n): A string of variable length, max lenth n.
+
+INTEGER,INT,SMALLINT: A whole number
+
+```SQL
+CREATE TABLE Project (name VARCHAR(30), Location VARCHAR(30), Number INT, Dept VARCHAR(30));
+```
+
+### Constraints
+
+Primary key
+
+![Screen Shot 2018-04-20 at 15.49.42.png](https://i.loli.net/2018/04/20/5ad9fe17c61b1.png)
+
+example:
+[![Screen Shot 2018-04-20 at 15.54.19.png](https://i.loli.net/2018/04/20/5ad9ff3cb7f11.png)](https://i.loli.net/2018/04/20/5ad9ff3cb7f11.png)
+
+Foreign key
+two ways:
+[![Screen Shot 2018-04-20 at 15.56.28.png](https://i.loli.net/2018/04/20/5ad9ffda8ad00.png)](https://i.loli.net/2018/04/20/5ad9ffda8ad00.png)
+
+NOT NULL
+DEFAULT
+CHECK
+
+
+
+
+ALTER
+INSERT
+UPDATE
