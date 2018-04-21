@@ -575,24 +575,307 @@ CREATE TABLE Project (name VARCHAR(30), Location VARCHAR(30), Number INT, Dept V
 
 ### Constraints
 
-Primary key
+1.Primary key
 
 ![Screen Shot 2018-04-20 at 15.49.42.png](https://i.loli.net/2018/04/20/5ad9fe17c61b1.png)
 
 example:
 [![Screen Shot 2018-04-20 at 15.54.19.png](https://i.loli.net/2018/04/20/5ad9ff3cb7f11.png)](https://i.loli.net/2018/04/20/5ad9ff3cb7f11.png)
 
-Foreign key
+2.Foreign key
+
 two ways:
 [![Screen Shot 2018-04-20 at 15.56.28.png](https://i.loli.net/2018/04/20/5ad9ffda8ad00.png)](https://i.loli.net/2018/04/20/5ad9ffda8ad00.png)
 
-NOT NULL
-DEFAULT
-CHECK
+3.NOT NULL
+
+E.g. CREATE TABLE table_name(col1 datatype， surname VARCHAR(20) NOT NULL,..);
+
+4.DEFAULT
+
+ CREATE TABLE table_name(col1 datatype, fname VARCHAR(20) DEFAULT ‘Bob’,..);
+
+5.CHECK
+
+CREATE TABLE table_name(col1 datatype, col2 datatype,.., colX datatype CHECK(col_nm condition));
+
+– E.g. CREATE TABLE table_name(col1 datatype,
+salary INTEGER CHECK(salary > 0)）；
+
+6.ALTER
+
+[![Screen Shot 2018-04-20 at 16.11.35.png](https://i.loli.net/2018/04/20/5ada03f3c51d7.png)](https://i.loli.net/2018/04/20/5ada03f3c51d7.png)
+
+7.INSERT
+[![Screen Shot 2018-04-20 at 16.16.36.png](https://i.loli.net/2018/04/20/5ada04aa55dc0.png)](https://i.loli.net/2018/04/20/5ada04aa55dc0.png)
+
+8.UPDATE
+[![Screen Shot 2018-04-20 at 16.17.09.png](https://i.loli.net/2018/04/20/5ada04aa576a3.png)](https://i.loli.net/2018/04/20/5ada04aa576a3.png)
+
+### DELETE
+
+[![Screen Shot 2018-04-20 at 16.20.10.png](https://i.loli.net/2018/04/20/5ada053eccb38.png)](https://i.loli.net/2018/04/20/5ada053eccb38.png)
+
+## Database Security
+
+### CIA
+
+Confidentiality
+Integrity
+Availability
+
+### Security Controls
+
+* Authorisation and access controls
+* Encryption
+* Backup and recovery
+
+![Screen Shot 2018-04-20 at 23.31.48.png](https://i.loli.net/2018/04/21/5ada6a67def84.png)
+
+## Query Optimisation
+
+Query Processing
+
+![Screen Shot 2018-04-20 at 23.34.14.png](https://i.loli.net/2018/04/21/5ada6af68dccd.png)
+
+### Optimisation Techniques - Indexing
+
+Index -> Indices(复数) 索引，指数，指标
+
+![Screen Shot 2018-04-20 at 23.38.23.png](https://i.loli.net/2018/04/21/5ada6befa79eb.png)
+
+> Scan every row in the student table, this is not efficient!
+
+### Creating an index in SQL
+
+```SQL
+CREATE INDEX name_index ON table_name(col_name);
+```
+
+e.g.
+
+```SQL
+CREATE INDEX student_fname ON Student(fname);
+CREATE INDEX lecture_fname ON Lectureer(fname);
+```
+
+注意：太多的Index 索引也会减慢插入，更新，删除的速度
+
+### Tips for optimising SQL
+
+![Screen Shot 2018-04-20 at 23.45.36.png](https://i.loli.net/2018/04/21/5ada6dc4ad6e4.png)
+
+some example:
+
+question:
+![Screen Shot 2018-04-20 at 23.55.58.png](https://i.loli.net/2018/04/21/5ada701f6d8a5.png)
+
+solution:
+![Screen Shot 2018-04-20 at 23.56.09.png](https://i.loli.net/2018/04/21/5ada701f6f297.png)
+
+question:
+
+```SQL
+SELECT fname FROM Student WHERE studentID IN(1,2,3,4);
+```
+
+solution:
+
+```SQL
+SELECT fname FROM Student WHERE studentID<5;
+```
+
+question:
+
+```SQL
+SELECT fname, sname, staffID FROM Lecturer WHERE staffID IN(SELECT lecturer FROM lecturerCourses);
+```
+
+solution:
+
+```SQL
+SELECT fname, sname, staffID FROM Lecturer INNER JOIN LecturerCourses ON Lecturer.staffID= LecturerCourses.lecturer;
+```
+
+question and solution:
+![Screen Shot 2018-04-21 at 00.10.51.png](https://i.loli.net/2018/04/21/5ada7398ad7f0.png)
+
+## Normalisation
+
+Apply normalisation techniques to a database to reduce information repetition.
+![Screen Shot 2018-04-21 at 00.19.20.png](https://i.loli.net/2018/04/21/5ada758c882af.png)
+
+### Functional Dependency Examples
+
+![Screen Shot 2018-04-21 at 00.31.30.png](https://i.loli.net/2018/04/21/5ada786f00933.png)
+
+> Functional dependency is based on the meaning of the data, not the actual data.
+e.g. Because all courses have only one staff member now, doesn’t mean they always will
+
+A functional dependency may include multiple dependencies:
+– staffID -> DOB, address
+
+...
+
+### First Normal Form
+
+no repeating groups
+
+### Seconde Normal Form
+
+All non PK attributes are fully functionally dependent on the complete primary key.
+
+### Third Normal Form
+
+There are no transitive dependencies.
+
+## Distributed Databases
+
+Logically interrelated collection of shared data physically distributed over a computer network.
+
+DDBMS:software which manages a distributed database and makes the distribution transparent to the users.
+
+### Fragmentation
+
+fragmentation:分裂，碎片。
+
+Fragment is **a relation** which has been subdivided.
+
+* horizontally水平的
+* vertically垂直的
+
+#### Horizontal Fragments
+
+中文可以理解为水平分片:按一定的条件把全局关系的所有元组划分成若干不相交的子集，每个子集为关系的一个片段。
+
+![Screen Shot 2018-04-21 at 09.35.36.png](https://i.loli.net/2018/04/21/5adaf80aad9da.png)
+
+#### Vertical Fragments
+
+垂直分片：把一个全局关系的属性集分成若干子集，并在这些子集上作投影运算，每个投影称为垂直分片。
+
+![Screen Shot 2018-04-21 at 09.35.42.png](https://i.loli.net/2018/04/21/5adaf80aaf4d3.png)
+
+#### Fragmentation Correctness
+
+* Completeness 完整性
+* Reconstruction 重建
+* Disjointness 不相交
+
+![Screen Shot 2018-04-21 at 09.49.20.png](https://i.loli.net/2018/04/21/5adafb2a0c20b.png)
+
+## XML
+
+XML: eXtensible Markup Language(可扩展标记语言)
+XML被设计用来传输和存储数据
+
+* Markup language for documents containing structured information
+* Using opening and closing tags
+* You define the tags
+* Just contain informaton
+
+example:
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+    <name>DTA</name>
+    <lecturer>Robbie</lecturer>
+    ...
+</note>
+
+```
+
+Advantage:
+
+![Screen Shot 2018-04-21 at 09.57.34.png](https://i.loli.net/2018/04/21/5adafd1463b67.png)
+
+### XML vs. Relational
+
+![Screen Shot 2018-04-21 at 09.58.50.png](https://i.loli.net/2018/04/21/5adafe42efd18.png)
+
+Roots and Children:
+
+![Screen Shot 2018-04-21 at 10.00.11.png](https://i.loli.net/2018/04/21/5adafe42f1801.png)
+
+Comments:
+
+```XML
+<!-- this is an XML comment>
+```
+
+XML must be correctly nested 需要正确的嵌套
+
+```XML
+<book><title>The Princess Bride</title></book>
+```
+
+### Naming Elements
+
+An element can’t have white space
+
+– E.g. < person id>4965</person id> is not valid
+
+It can’t start with a number!
+
+– E.g. <7id>1029456</7id> is not
+
+### Namespaces
+
+XML **命名空间**是提供**避免元素命名冲突**的方法。
+Namespaces in XML cosist of a prefix(前缀) and a URI
+
+* Achieved using the **xmlns attribute** in the start tag of an element
+* xmlns: prefix="URI"
+
+统一资源标识符（URI，全称 Uniform Resource Identifier）
+统一资源标识符（URI）是一串可以标识因特网资源的字符。
+
+> 最常用的 URI 是用来标识因特网域名地址的统一资源定位器（URL）。另一个不那么常用的 URI 是统一资源命名（URN）。
+在我们的实例中，我们仅使用 URL。
+
+example:
+
+```XML
+<!-- 首先要定义命名空间：格式是 xmlns:prefix="">
+<!-->
+<students xmlns:student="www.dcs.gla.ac.uk/students">
+<student:name>Malcolm Reynolds</student:name>
+<student:dob>27/3/71</student:dob>
+</students>
+```
+
+可以有默认命名空间： xmlns="URI"
+namespace can be defined in root OR in element
+
+### DTD
+
+!!
+
+Document Type Definition
+
+A set of rules that fefines legal elements and attributes for XML documents. Using for documents sharing.
+
+![Screen Shot 2018-04-21 at 10.34.59.png](https://i.loli.net/2018/04/21/5adb0661f38bb.png)
+
+#### DTD syntax
+
+![Screen Shot 2018-04-21 at 10.35.17.png](https://i.loli.net/2018/04/21/5adb066201427.png)
+
+declare element:
+
+```XML
+<!ELEMENT element_name(content_model)>
+```
+
+example:
+![Screen Shot 2018-04-21 at 10.36.34.png](https://i.loli.net/2018/04/21/5adb066202f08.png)
+
+![Screen Shot 2018-04-21 at 10.36.49.png](https://i.loli.net/2018/04/21/5adb0661f03cf.png)
+
+#### attributes
+
+![Screen Shot 2018-04-21 at 10.43.29.png](https://i.loli.net/2018/04/21/5adb07d622d58.png)
 
 
-
-
-ALTER
-INSERT
-UPDATE
+> Write a DTD for a given XML document
