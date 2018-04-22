@@ -39,3 +39,5 @@ Cloud              Era
 * without significant up-front investment.
 
 * affords efficient resource utilisation with the ability to scale up and dow in line with the demands of the enterprise
+
+Read slides
