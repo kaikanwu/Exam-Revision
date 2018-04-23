@@ -40,4 +40,4 @@ Cloud              Era
 
 * affords efficient resource utilisation with the ability to scale up and dow in line with the demands of the enterprise
 
-Read slides
+Read slides and exam paper.
