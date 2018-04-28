@@ -1,10 +1,35 @@
 # System and Network
 
-## Introduction
+<!-- TOC -->
+
+- [System and Network](#system-and-network)
+    - [一、Introduction](#一introduction)
+        - [Levels of Abstraction](#levels-of-abstraction)
+        - [Computers](#computers)
+        - [Data](#data)
+        - [Representations](#representations)
+        - [Programs](#programs)
+        - [Binary Codes](#binary-codes)
+        - [Computer Storage](#computer-storage)
+        - [Bytes](#bytes)
+        - [Words](#words)
+        - [Questions](#questions)
+    - [二、Binary Codes](#二binary-codes)
+        - [Basic Components](#basic-components)
+        - [Unsigned Number Representation](#unsigned-number-representation)
+        - [Unsigned binary addition加法](#unsigned-binary-addition加法)
+        - [Hexadecimal](#hexadecimal)
+        - [Signed numbers](#signed-numbers)
+        - [Characters](#characters)
+        - [Question](#question)
+
+<!-- /TOC -->
+
+## 一、Introduction
 
 Build computer systems from very many simple components- e.g. transistors(晶体管) & wires(金属丝).
 
-### Levels of Abstraction
+### Levels of Abstraction
 
 ![Screen Shot 2018-04-27 at 12.44.12.png](https://i.loli.net/2018/04/27/5ae30d5202a2c.png)
 
@@ -100,7 +125,6 @@ A word is a larger amount of inofrmation.
 |Word     |  32 bits       |    4 bytes     |
 |Long word     |  64 bits       |  8 bytes       |
 
-
 A word contain K bits is called a k-bit word. 可以表示2的K次方的不同的值。
 
 ![Screen Shot 2018-04-28 at 10.46.12.png](https://i.loli.net/2018/04/28/5ae442fd55050.png)
@@ -116,3 +140,80 @@ Early machines used 8-bits; today the norm is 64-bits.
 3. Explain why digital representations have more resistance to noise than analogue.
 
 4. An 8-bit adder is a device that takes in two 8-bit code words representing numbers and generates the 8-bit code word representation of the sum of the numbers. Such a device will sometimes fail to give the right answer. Explain why.
+
+## 二、Binary Codes
+
+To manipulate binary representations in real devices need to connect components by **wires**.
+
+- Each wire can represent one bit at one time(as high or low voltage bewteen wire & ground).
+- **Line driver(output)**
+- **line receiver(input)**
+- To carry n-bits, can use one wire(**serial transmission**串行传输)taking n bit times, or n wires running in parallel(**parallel transmission**并行传输)taking 1 bit time. This arrangement is called an n-bit bus.
+
+### Basic Components
+
+A 1-bit memory(build into n-bit **registers** to store binary code words)
+
+Devices to perform useful operations on bits and on code words.
+Examples:
+
+- **Inverter反相器**(or NOT gate非门): onew wire in, one wire out, flips input bit(H->L, L->H).
+- **n-bit adder**:
+
+### Unsigned Number Representation
+
+Decimal postitional code. And binary positional code. E.g.
+![Screen Shot 2018-04-28 at 23.21.25.png](https://i.loli.net/2018/04/29/5ae4f400aa1c1.png)
+
+### Unsigned binary addition加法
+
+x = 1010 and y = 1111, the result should be 11001.
+
+If we add two n-bit unsigned numbers and the sum is too big to be an n-bit number, the sum cannot be represented in the n-bit code. This is called an **(unsigned) overflow(这里指算数溢出)**
+
+### Hexadecimal
+
+hexa:六 decimal:十进制的 hexadecimal:十六进制的
+
+Binary codewords can be very long and difficult for humans to work with. A common way to shorten binary strings is to convrt them to a base 16 number representation: hexadecimal.
+
+Hexadecimal has 16 digits: **0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f.**
+
+Convert hexadecimal to binary: 3a6e-> 0011 1010 0110 1110
+
+### Signed numbers
+
+Here numbers can be **negative** or **positive**.
+
+Negative 1 in 8-bit sign and magnitude code is 1000 0001
+Positive 1 in 8-bit sign and magnitude code is 0000 0001
+
+complement code: 补码
+
+**原码表示法**是机器数的一种简单的表示法。其符号位用0表示正号，用1表示负号，数值一般用二进制形式表示。
+
+机器数的**反码**可由原码得到。如果机器数是正数，则该机器数的反码与原码一样；如果机器数是负数，则该机器数的反码是对它的原码（符号位除外）各位取反而得到的。
+
+机器数的**补码**可由原码得到。如果机器数是正数，则该机器数的补码与原码一样；如果机器数是负数，则该机器数的补码是对它的原码（除符号位外）各位取反，并在未位加1而得到的。
+
+### Characters
+
+A character code is a table giving the bit value that represents each character.
+
+ASCII(American Standard Code for Information Interchange) is an older standard code(1960), still in common use: uses 7-bits or 8-bit code words.
+
+**Unicode**(two-byte code, 16 bits) is the current standard and includes many additional characters. can be extended to 32-bits.
+
+C, C++: ASCII
+Java: A string in Java is a sequence of Unicode characters.
+
+### Question
+
+1. Bit times are just as important on buses as on single wires. Why?
+2. A register will need some inputs and outputs other than for the data.
+stored or read. Why?
+3. Convert 224 to binary.
+4. Convert 111101012 to hexadecimal.
+5. Convert FE16 to decimal.
+6. The 8-bit 2’s complement code can represent all numbers between - 128 and +127. An 8-bit unsigned adder will add numbers in this range correctly unless the code overflows. Find two examples to show that 2’s complement code overflows do not occur when unsigned code overflows do (one example) and vice versa (another example)
+7. Challenge. Can you find a condition for two’s complement overflow in an 8-bit code (Hint it involves the carries into and out of the MSB)
