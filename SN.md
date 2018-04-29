@@ -13,15 +13,24 @@
         - [Computer Storage](#computer-storage)
         - [Bytes](#bytes)
         - [Words](#words)
-        - [Questions](#questions)
+        - [Questions 1](#questions-1)
     - [二、Binary Codes](#二binary-codes)
         - [Basic Components](#basic-components)
         - [Unsigned Number Representation](#unsigned-number-representation)
         - [Unsigned binary addition加法](#unsigned-binary-addition加法)
+        - [Overflow](#overflow)
         - [Hexadecimal](#hexadecimal)
         - [Signed numbers](#signed-numbers)
+        - [Two's complement](#twos-complement)
         - [Characters](#characters)
-        - [Question](#question)
+        - [Questions 2](#questions-2)
+    - [Basic Computer Architecture](#basic-computer-architecture)
+        - [Harvard and Princeton](#harvard-and-princeton)
+        - [More memory](#more-memory)
+        - [CPU](#cpu)
+    - [Sigma 16](#sigma-16)
+    - [Instructions](#instructions)
+        - [Machine code](#machine-code)
 
 <!-- /TOC -->
 
@@ -131,7 +140,7 @@ A word contain K bits is called a k-bit word. 可以表示2的K次方的不同�
 
 Early machines used 8-bits; today the norm is 64-bits.
 
-### Questions
+### Questions 1
 
 1. What data sets are involved in the following Java data types: boolean, byte, short, char?
 
@@ -148,7 +157,7 @@ To manipulate binary representations in real devices need to connect components 
 - Each wire can represent one bit at one time(as high or low voltage bewteen wire & ground).
 - **Line driver(output)**
 - **line receiver(input)**
-- To carry n-bits, can use one wire(**serial transmission**串行传输)taking n bit times, or n wires running in parallel(**parallel transmission**并行传输)taking 1 bit time. This arrangement is called an n-bit bus.
+- To carry n-bits, can use one wire(**serial transmission**串行传输)taking n bit times, or n wires running in parallel(**parallel transmission**并行传输)taking 1 bit time. This arrangement is called an n-bit **bus**.
 
 ### Basic Components
 
@@ -160,6 +169,8 @@ Examples:
 - **Inverter反相器**(or NOT gate非门): onew wire in, one wire out, flips input bit(H->L, L->H).
 - **n-bit adder**:
 
+A necessary and sufficient condition for unsigned overflow is that the carry from the **most significant bit(MSB)** position is 1.
+
 ### Unsigned Number Representation
 
 Decimal postitional code. And binary positional code. E.g.
@@ -168,6 +179,8 @@ Decimal postitional code. And binary positional code. E.g.
 ### Unsigned binary addition加法
 
 x = 1010 and y = 1111, the result should be 11001.
+
+### Overflow
 
 If we add two n-bit unsigned numbers and the sum is too big to be an n-bit number, the sum cannot be represented in the n-bit code. This is called an **(unsigned) overflow(这里指算数溢出)**
 
@@ -196,6 +209,15 @@ complement code: 补码
 
 机器数的**补码**可由原码得到。如果机器数是正数，则该机器数的补码与原码一样；如果机器数是负数，则该机器数的补码是对它的原码（除符号位外）各位取反，并在未位加1而得到的。
 
+### Two's complement
+
+The most commonest code for signed numbers is two's complement.
+
+NOTE that the **code word 1111 1111** represents **255** in **an unsigned 8-bit code** but **-1** in an **8-bit two’s complement code**.
+
+**Explain!!!**:
+![Screen Shot 2018-04-29 at 10.55.07.png](https://i.loli.net/2018/04/29/5ae596a518d30.png)
+
 ### Characters
 
 A character code is a table giving the bit value that represents each character.
@@ -207,13 +229,82 @@ ASCII(American Standard Code for Information Interchange) is an older standard c
 C, C++: ASCII
 Java: A string in Java is a sequence of Unicode characters.
 
-### Question
+### Questions 2
 
-1. Bit times are just as important on buses as on single wires. Why?
-2. A register will need some inputs and outputs other than for the data.
-stored or read. Why?
-3. Convert 224 to binary.
-4. Convert 111101012 to hexadecimal.
-5. Convert FE16 to decimal.
-6. The 8-bit 2’s complement code can represent all numbers between - 128 and +127. An 8-bit unsigned adder will add numbers in this range correctly unless the code overflows. Find two examples to show that 2’s complement code overflows do not occur when unsigned code overflows do (one example) and vice versa (another example)
-7. Challenge. Can you find a condition for two’s complement overflow in an 8-bit code (Hint it involves the carries into and out of the MSB)
+Q1. Bit times are just as important on buses as on single wires. Why?
+
+A1. To carry n-bits, can use one wire taking n bit times, or n wires running in parallel taking 1 bit time.
+
+Q2. A register will need some inputs and outputs other than for the data stored or read. Why?
+
+A2.
+
+Q3. Convert 224 to binary.
+
+A3. 11100000
+
+Q4. Convert 11110101 to hexadecimal.
+
+A4. F5
+
+Q5. Convert FE to decimal.
+
+A5. 254
+
+Q6. The 8-bit 2’s complement code can represent all numbers between - 128 and +127. An 8-bit unsigned adder will add numbers in this range correctly unless the code overflows. Find two examples to show that 2’s complement code overflows do not occur when unsigned code overflows do (one example) and vice versa (another example)
+
+A6.
+
+Q7. Challenge. Can you find a condition for two’s complement overflow in an 8-bit code (Hint it involves the carries into and out of the MSB)
+
+A7.
+
+## Basic Computer Architecture
+
+A computer has several key subsystems: processor(or central processing unit CPU), instruction memory, data memory, input/output subsystem, system interconnect.
+
+### Harvard and Princeton
+
+Primary memory: randomly addressable memory, used for instructions and data.
+
+A computer where instrucions and data are stored in the same address space is called **von Neumann** or **Princeton architecture**.
+
+> In most current computers the instructions and data are stored in a single address space(often on the same chips), accessed using the same buses.
+
+A computer with separate address spaces is called a Harvard architecture.
+
+### More memory
+
+Physical memory is called **volatile** if its content is lost when power is removed; otherwise it is non-volatile.
+
+Read only memory: **ROM**
+
+Random access memory: **RAM**
+
+Flash memory: behave like RAM but is non-volatile.
+
+Secondary memory
+
+### CPU
+
+A CPU is a compound subsystem comprising:
+
+- A control unit(CU)
+- An execution unit(EU)
+- A register file
+- A bus interface
+
+> These devices are connected via buses internal to the CPU
+
+## Sigma 16
+
+Sigma 16: a 16-bit architecture.
+
+- data words and addresses are all 16-bits long
+- there are 16 registers in the register file: R0...R15
+- R0 is always set to 0.
+
+## Instructions
+
+### Machine code
+
