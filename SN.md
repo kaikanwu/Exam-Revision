@@ -308,3 +308,12 @@ Sigma 16: a 16-bit architecture.
 
 ### Machine code
 
+The info you’re looking for is pulled together from a few points in the notes (Section 4 and Section 8 in particular). Here is a summary for convenience.
+
+RRR instructions are one word long while RX and X instructions are 2 words long. In Sigma16 all memory words take one memory cycle to read so RRR instructions take 1 cycle and the others take 2 cycles to fetch. LOAD and STORE also require an extra memory cycle to read (LOAD) or write (STORE) a word of data (from the data area of memory) making these two instructions (and only those two) take 3 cycles altogether.
+
+Processor internal activities (like calculating EAs, performing arithmetic etc) are assumed to occur so quickly compared to memory cycles that they can be entirely overlapped with them. So the time an instruction takes is always identical to the number of memory cycles it takes multiplied by the time a cycle takes. There is no given value for the time a Sigma16 memory cycle takes but sometimes an exam question will give you a value to use (10ns is typical for a full memory cycle in a modern hardware machine).
+
+As to the cache hits, there are 11 cycles in the loop but two of them (the third cycles of the LOAD and STORE respectively) are accesses to data elements in the array which are different each time round and so these never hit in the cache. There are therefore only 9 cache hits in the loop, each time round but the first, which makes 9 x 9 =81, as you say.
+
+I think it's to do with the range limits, which for 16-bit two's complement are 32767 and -32768, so if you know one number in the multiplication, then whatever numbers will get you to each of those
